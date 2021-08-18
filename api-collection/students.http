@@ -1,0 +1,34 @@
+@baseURL = http://localhost:3000/api
+
+@resourceName = students
+
+# Students
+
+###
+# @name getAll
+GET {{baseURL}}/{{resourceName}}
+
+###
+
+# @name addNew
+
+POST {{baseURL}}/{{resourceName}}
+Content-Type: application/json
+
+
+###
+
+# @name update
+
+PATCH {{baseURL}}/{{resourceName}}/
+Content-Type: application/json
+
+{
+    "name":"TP Hồ Chí Minh"
+}
+
+###
+
+# @name delete
+
+DELETE  {{baseURL}}/{{resourceName}}/
