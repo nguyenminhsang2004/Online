@@ -22,7 +22,7 @@ server.use((req, res, next) => {
 })
 
 router.render = (req, res) => {
-  
+
   const headers = res.getHeaders();
 
   const totalCountHeader = headers['x-total-count'];
@@ -46,6 +46,6 @@ router.render = (req, res) => {
 };
 
 server.use('/api', router)
-server.listen(3000, () => {
+server.listen(process.env.PORT ||3000, () => {
   console.log('JSON Server is running')
 })
