@@ -22,27 +22,21 @@ server.use((req, res, next) => {
 })
 
 router.render = (req, res) => {
-
   const headers = res.getHeaders();
-
   const totalCountHeader = headers['x-total-count'];
-  if (req.method === 'GET' && totalCountHeader) {
+  if (req.method === 'GET') {
     const queryParams = queryString.parse(req._parsedUrl.query);
-
     const result = {
       data: res.locals.data,
       pagination: {
         _page: Number.parseInt(queryParams._page) || 1,
-        _limit: Number.parseInt(queryParams._limit) || 10,
+        _limit: Number.parseInt(queryParams._limit) || Number.parseInt(totalCountHeader),
         _totalRows: Number.parseInt(totalCountHeader),
       },
     };
 
     return res.jsonp(result);
   }
-
-  // Otherwise, keep default behavior
-  res.jsonp(res.locals.data);
 };
 
 server.use('/api', router)
