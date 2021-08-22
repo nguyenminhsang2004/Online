@@ -1,4 +1,5 @@
 
+const { fake } = require('faker');
 const faker = require('faker');
 const fs = require('fs');
 
@@ -31,11 +32,11 @@ randomStudentList = (citiesList, numberOfCity) => {
                 cityId: city.id,
                 id: faker.random.uuid(),
                 name: faker.name.findName(),
-                sex: faker.name.gender(),
+                sex: faker.random.boolean() ? 'male' : 'female',
                 dob: faker.date.past(),
                 phone: faker.phone.phoneNumberFormat(),
                 address: faker.address.streetAddress(),
-                score: parseFloat((Math.random() * (10 - 5) + 5).toFixed(2)),
+                score: parseFloat((Math.random() * (10 - 1) + 1).toFixed(2)),
                 imageUrl: faker.image.imageUrl(400,400),
                 createdAt: Date.now(),
                 updatedAt: Date.now()
@@ -54,7 +55,7 @@ randomStudentList = (citiesList, numberOfCity) => {
 (() => {
 
     const citiesList = randomCitiesList();
-    const studentsList = randomStudentList(citiesList, 5);
+    const studentsList = randomStudentList(citiesList, 10);
 
     const db = {
         cities:citiesList,
