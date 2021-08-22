@@ -36,7 +36,7 @@ randomStudentList = (citiesList, numberOfCity) => {
                 dob: faker.date.past(),
                 phone: faker.phone.phoneNumberFormat(),
                 address: faker.address.streetAddress(),
-                score: parseFloat((Math.random() * (10 - 1) + 1).toFixed(2)),
+                score: parseFloat((Math.random() * (10 - 0) + 0).toFixed(2)),
                 imageUrl: faker.image.imageUrl(400,400),
                 createdAt: Date.now(),
                 updatedAt: Date.now()
@@ -55,7 +55,7 @@ randomStudentList = (citiesList, numberOfCity) => {
 (() => {
 
     const citiesList = randomCitiesList();
-    const studentsList = randomStudentList(citiesList, 10);
+    const studentsList = randomStudentList(citiesList, 30);
 
     const db = {
         cities:citiesList,
