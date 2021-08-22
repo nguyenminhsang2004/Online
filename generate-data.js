@@ -8,7 +8,7 @@ faker.locale = "vi";
 
 randomCitiesList = () => {
     const citiesList = [];
-    ["TP Hồ Chí Minh","Hà Nội","Tây Ninh","Bình Dương","Long An"].map(value => {
+    ["TP Hồ Chí Minh","Hà Nội","Đà Nẵng","Tây Ninh"].map(value => {
         const city = {
             id: faker.random.uuid(),
             name: value,
@@ -55,7 +55,7 @@ randomStudentList = (citiesList, numberOfCity) => {
 (() => {
 
     const citiesList = randomCitiesList();
-    const studentsList = randomStudentList(citiesList, 30);
+    const studentsList = randomStudentList(citiesList, 50);
 
     const db = {
         cities:citiesList,
