@@ -35,10 +35,16 @@ router.render = (req, res) => {
         _limit: Number.parseInt(queryParams._limit) || Number.parseInt(totalCountHeader),
         _totalRows: Number.parseInt(totalCountHeader),
       };
-      return res.jsonp(result);
+    }else {
+      result.pagination = {
+        _page: 1,
+        _limit: 1,
+        _totalRows: 1,
+      };
     }
-    return res.jsonp(res.locals.data);
+    return res.jsonp(result);
   }
+
   return res.jsonp(res.locals.data);
 };
 
